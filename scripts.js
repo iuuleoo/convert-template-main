@@ -9,6 +9,7 @@ const amount = document.getElementById("amount")
 const currency = document.getElementById("currency")
 const footer = document.querySelector("main footer")
 const description = document.getElementById("description")
+const result = document.getElementById("result")
 
 
 // Manipulando o input amount para receber somente números.
@@ -42,6 +43,12 @@ function convertCurrency(amount, price, symbol){
         // Exibindo a cotação da moeda selecionada.
         description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
 
+        // Calculando o valor total.
+        let total = amount * price
+       
+        // Exibe o resultado total.
+        result.textContent = total
+
         //Aplica a classe que exibe o footer para mostrar o resultado.
       footer.classList.add("show-result")
     }
@@ -58,7 +65,7 @@ function convertCurrency(amount, price, symbol){
 
 // Formata a moeda em Real Brasileiro.
 function formatCurrencyBRL(value){
-    
+
    return Number(value).toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL"
